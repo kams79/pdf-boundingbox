@@ -157,15 +157,15 @@ const DrawingLayer: React.FC<DrawingLayerProps> = ({
     useEffect(() => {
         const fc = fabricRef.current;
         if (!fc) return;
-        fc.on('mouse:down', onMouseDown);
-        fc.on('mouse:move', onMouseMove);
-        fc.on('mouse:up', onMouseUp);
-        fc.on('path:created', onPathCreated as (e: fabric.IEvent) => void);
+        fc.on('mouse:down', onMouseDown as any);
+        fc.on('mouse:move', onMouseMove as any);
+        fc.on('mouse:up', onMouseUp as any);
+        fc.on('path:created', onPathCreated as any);
         return () => {
-            fc.off('mouse:down', onMouseDown);
-            fc.off('mouse:move', onMouseMove);
-            fc.off('mouse:up', onMouseUp);
-            fc.off('path:created', onPathCreated as (e: fabric.IEvent) => void);
+            fc.off('mouse:down', onMouseDown as any);
+            fc.off('mouse:move', onMouseMove as any);
+            fc.off('mouse:up', onMouseUp as any);
+            fc.off('path:created', onPathCreated as any);
         };
     }, [onMouseDown, onMouseMove, onMouseUp, onPathCreated]);
 
